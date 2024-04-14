@@ -255,6 +255,10 @@ ramips_setup_interfaces()
 		ucidef_add_switch "switch0" \
 			"5:lan" "4:wan" "6@eth0"
 		;;
+	xiaomi,miwifi-r3)
+		ucidef_add_switch "switch0" \
+			"1:lan" "4:lan" "0:wan" "6@eth0"
+		;;
 	youku,x2)
 		ucidef_add_switch "switch0" \
 			"1:lan:2" "4:lan:1" "0:wan" "6@eth0"
@@ -401,6 +405,10 @@ ramips_setup_macs()
 	linksys,e1700)
 		wan_mac=$(mtd_get_mac_ascii config WAN_MAC_ADDR)
 		;;
+	xiaomi,miwifi-r3)
+		wan_mac=$(mtd_get_mac_binary factory 0x28)
+		lan_mac=$(macaddr_setbit_la "$wan_mac")
+    ;;
 	rostelecom,rt-fl-1|\
 	rostelecom,s1010)
 		label_mac=$(mtd_get_mac_binary "SC Nvram(permanent data)" 0x0)
