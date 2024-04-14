@@ -200,10 +200,10 @@ detect_mac80211() {
 			set wireless.${name}=wifi-device
 			set wireless.${name}.type=mac80211
 			${dev_id}
-			set wireless.${name}.channel=${channel}
-			set wireless.${name}.band=${mode_band}
-			set wireless.${name}.htmode=$htmode
-			set wireless.${name}.disabled=1
+			set wireless.${dev_id}.channel=${channel}
+			set wireless.${dev_id}.band=${mode_band}
+			set wireless.${dev_id}.htmode=$htmode
+			set wireless.${dev_id}.disabled=1
 
 			set wireless.default_${name}=wifi-iface
 			set wireless.default_${name}.device=${name}
